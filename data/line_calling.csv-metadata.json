@@ -2,7 +2,7 @@
   "@context": ["http://www.w3.org/ns/csvw", {"@language": "en"}],
   "url": "line_calling.csv",
   "dc:title": "Electronic line calling in professional tennis, by tournament and season (2017 to 2026)",
-  "dc:description": "How lines were called at the Grand Slams, ATP Masters 1000, WTA 1000, the season finals and the main team events from 2017 to 2026: line judges, a player challenge system, or live electronic line calling. One row per event, season and tour, each with a source link and a confidence level.",
+  "dc:description": "How lines were called at the Grand Slams, ATP Masters 1000, WTA 1000, the season finals and the main team events from 2017 to 2026: line judges, a player challenge system, or live electronic line calling. One row per event, season and tour, each with a confidence level. Every row with a known value links its source.",
   "dc:publisher": {"schema:name": "Live Tennis API", "schema:url": {"@id": "https://livetennisapi.com"}},
   "dc:license": {"@id": "https://creativecommons.org/licenses/by/4.0/"},
   "dcat:keyword": ["tennis", "electronic line calling", "Hawk-Eye Live", "line judges", "officiating", "ATP", "WTA", "Grand Slam"],
@@ -36,7 +36,7 @@
       {"name": "source_title", "titles": "source_title", "datatype": "string",
        "dc:description": "The title of that page. A wire service credit may follow in brackets."},
       {"name": "source_date", "titles": "source_date", "datatype": "date",
-       "dc:description": "The publication date shown on the source page. Blank when the page shows none we trust."},
+       "dc:description": "The publication date shown on the source page. For a PDF that prints no date, the date in its file name or its creation date. Blank when no date can be trusted."},
       {"name": "confidence", "titles": "confidence", "required": true,
        "datatype": {"base": "string", "format": "confirmed|inferred|unknown"},
        "dc:description": "confirmed, inferred or unknown. See the README."}

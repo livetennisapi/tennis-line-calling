@@ -7,9 +7,9 @@ abstract: >-
   covers the Grand Slams, ATP Masters 1000 and WTA 1000 events, the season
   finals and the main team events.
   Each row gives one event, season and tour. It says whether the event used
-  line judges, a player challenge system or live electronic line calling, and
-  links the page that supports it. Each row also carries a confidence level
-  of confirmed, inferred or unknown.
+  line judges, a player challenge system or live electronic line calling.
+  Every row with a known value links the page that supports it. Each row
+  also carries a confidence level of confirmed, inferred or unknown.
 authors:
   - name: "Live Tennis API"
     website: "https://livetennisapi.com"

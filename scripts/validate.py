@@ -38,60 +38,79 @@ CHALLENGE = {"yes", "no", "unknown"}
 CONFIDENCE = ["confirmed", "inferred", "unknown"]
 SURFACES = {"Hard", "Hard (indoor)", "Clay", "Grass"}
 ELC_SYSTEMS = {"", "Hawk-Eye", "Hawk-Eye Live", "FoxTenn", "Bolt6"}
-FIRST_SEASON, LAST_SEASON = 2017, 2026
+SEASONS = range(2017, 2027)
 
-# Which tour values each event may carry.
-GRAND_SLAMS = {"Australian Open", "Roland Garros", "Wimbledon", "US Open"}
-TEAM_EVENTS = {"ATP Cup", "United Cup", "Davis Cup Finals", "Billie Jean King Cup Finals"}
-ATP_ONLY = {"ATP Finals", "Next Gen ATP Finals"}
-WTA_ONLY = {"WTA Finals", "Wuhan Open", "Guadalajara Open"}
-
-# Event editions that were not played. A row for one of these is an error.
-NOT_HELD = {
-    ("Wimbledon", "combined", 2020),
-    ("Indian Wells Open", "ATP", 2020),
-    ("Indian Wells Open", "WTA", 2020),
-    ("Miami Open", "ATP", 2020),
-    ("Miami Open", "WTA", 2020),
-    ("Monte-Carlo Masters", "ATP", 2020),
-    ("Madrid Open", "ATP", 2020),
-    ("Madrid Open", "WTA", 2020),
-    ("Canadian Open", "ATP", 2020),
-    ("Canadian Open", "WTA", 2020),
-    ("Next Gen ATP Finals", "ATP", 2020),
-    ("WTA Finals", "WTA", 2020),
-    ("Davis Cup Finals", "team", 2020),
-    ("Billie Jean King Cup Finals", "team", 2020),
-    ("Shanghai Masters", "ATP", 2020),
-    ("Shanghai Masters", "ATP", 2021),
-    ("Shanghai Masters", "ATP", 2022),
-    ("China Open", "WTA", 2020),
-    ("China Open", "WTA", 2021),
-    ("China Open", "WTA", 2022),
-    ("Wuhan Open", "WTA", 2020),
-    ("Wuhan Open", "WTA", 2021),
-    ("Wuhan Open", "WTA", 2022),
-    ("Wuhan Open", "WTA", 2023),
+# The editions in scope. Each entry is (event, tour): (seasons, earliest start).
+# The earliest start is a month and day no edition (qualifying included) began
+# before. A confirmed row needs a source dated on or after it.
+ALL = set(SEASONS)
+MASTERS_SEASONS = ALL - {2020}
+SCOPE = {
+    ("Australian Open", "combined"): (ALL, (1, 5)),
+    ("Roland Garros", "combined"): (ALL, (5, 15)),
+    ("Wimbledon", "combined"): (ALL - {2020}, (6, 15)),
+    ("US Open", "combined"): (ALL, (8, 10)),
+    ("ATP Finals", "ATP"): (ALL - {2026}, (11, 1)),
+    ("Next Gen ATP Finals", "ATP"): (ALL - {2020, 2026}, (11, 1)),
+    ("Indian Wells Open", "ATP"): (MASTERS_SEASONS, (2, 28)),
+    ("Miami Open", "ATP"): (MASTERS_SEASONS, (3, 10)),
+    ("Monte-Carlo Masters", "ATP"): (MASTERS_SEASONS, (3, 30)),
+    ("Madrid Open", "ATP"): (MASTERS_SEASONS, (4, 15)),
+    ("Italian Open", "ATP"): (ALL, (5, 1)),
+    ("Canadian Open", "ATP"): (MASTERS_SEASONS, (7, 20)),
+    ("Cincinnati Open", "ATP"): (ALL, (7, 30)),
+    ("Shanghai Masters", "ATP"): (ALL - {2020, 2021, 2022}, (9, 25)),
+    ("Paris Masters", "ATP"): (ALL - {2026}, (10, 20)),
+    ("Indian Wells Open", "WTA"): (MASTERS_SEASONS, (2, 28)),
+    ("Miami Open", "WTA"): (MASTERS_SEASONS, (3, 10)),
+    ("Madrid Open", "WTA"): (MASTERS_SEASONS, (4, 15)),
+    ("Italian Open", "WTA"): (ALL, (5, 1)),
+    ("Canadian Open", "WTA"): (MASTERS_SEASONS, (7, 20)),
+    ("Cincinnati Open", "WTA"): (ALL, (7, 30)),
+    ("China Open", "WTA"): (ALL - {2020, 2021, 2022}, (9, 15)),
+    ("Wuhan Open", "WTA"): ({2017, 2018, 2019, 2024, 2025, 2026}, (9, 15)),
+    # Dubai and Doha only in the seasons they were Premier 5 or WTA 1000.
+    ("Dubai Tennis Championships", "WTA"): ({2017, 2019, 2021, 2023, 2024, 2025, 2026}, (2, 5)),
+    ("Qatar Open", "WTA"): ({2018, 2020, 2022, 2024, 2025, 2026}, (2, 1)),
+    ("Guadalajara Open", "WTA"): ({2022, 2023}, (9, 10)),
+    ("WTA Finals", "WTA"): (ALL - {2020, 2026}, (10, 15)),
+    ("ATP Cup", "team"): ({2020, 2021, 2022}, (1, 1)),
+    ("United Cup", "team"): ({2023, 2024, 2025, 2026}, None),  # starts late in December the year before
+    ("Davis Cup Finals", "team"): ({2019, 2021, 2022, 2023, 2024, 2025}, (9, 1)),
+    ("Billie Jean King Cup Finals", "team"): ({2021, 2022, 2023, 2024, 2025, 2026}, (9, 1)),
 }
-# Team events that only ran in some seasons.
-SEASON_SPAN = {
-    "ATP Cup": (2020, 2022),
-    "United Cup": (2023, LAST_SEASON),
-    "Davis Cup Finals": (2019, LAST_SEASON),
-    "Billie Jean King Cup Finals": (2021, LAST_SEASON),
+# ATP 500 events, 2025 and 2026 only. Basel and Vienna 2026 were still to come at release.
+ATP_500 = {
+    "Rotterdam Open": (1, 25), "Dallas Open": (1, 25), "Qatar Open": (2, 1), "Rio Open": (2, 1),
+    "Dubai Tennis Championships": (2, 5), "Mexican Open": (2, 15), "Barcelona Open": (4, 5),
+    "BMW Open": (4, 5), "Hamburg Open": (5, 10), "Halle Open": (6, 5), "Queen's Club Championships": (6, 5),
+    "Washington Open": (7, 15), "China Open": (9, 15), "Japan Open": (9, 15),
+    "Swiss Indoors": (10, 10), "Vienna Open": (10, 10),
+}
+for _event, _start in ATP_500.items():
+    _seasons = {2025} if _event in ("Swiss Indoors", "Vienna Open") else {2025, 2026}
+    SCOPE[(_event, "ATP")] = (_seasons, _start)
+# Editions that moved to a later date than usual.
+START_OVERRIDES = {
+    ("Indian Wells Open", 2021): (10, 1),
+    ("Roland Garros", 2020): (9, 20),
+    ("Italian Open", 2020): (9, 10),
+    ("Cincinnati Open", 2020): (8, 15),
 }
 
 
-def allowed_tours(event: str) -> set[str]:
-    if event in GRAND_SLAMS:
-        return {"combined"}
-    if event in TEAM_EVENTS:
-        return {"team"}
-    if event in ATP_ONLY:
-        return {"ATP"}
-    if event in WTA_ONLY:
-        return {"WTA"}
-    return {"ATP", "WTA"}
+def expected_keys() -> set[tuple[str, str, int]]:
+    return {(event, tour, season) for (event, tour), (seasons, _) in SCOPE.items() for season in seasons}
+
+
+def earliest_start(event: str, tour: str, season: int) -> datetime.date:
+    if (event, season) in START_OVERRIDES:
+        month, day = START_OVERRIDES[(event, season)]
+        return datetime.date(season, month, day)
+    start = SCOPE[(event, tour)][1]
+    if start is None:
+        return datetime.date(season - 1, 12, 20)
+    return datetime.date(season, *start)
 
 
 def check_row(row: dict, where: str, today: datetime.date) -> list[str]:
@@ -104,15 +123,10 @@ def check_row(row: dict, where: str, today: datetime.date) -> list[str]:
             errors.append(f"{where}: {col} is empty")
 
     event, tour = row["event"], row["tour"]
-    if tour not in allowed_tours(event):
-        errors.append(f"{where}: tour {tour!r} not allowed for {event}")
     season = int(row["season"]) if row["season"].isdigit() else None
-    if season is None or not FIRST_SEASON <= season <= LAST_SEASON:
-        errors.append(f"{where}: season {row['season']!r} outside {FIRST_SEASON}-{LAST_SEASON}")
-    elif (event, tour, season) in NOT_HELD:
-        errors.append(f"{where}: this edition was not played")
-    elif event in SEASON_SPAN and not SEASON_SPAN[event][0] <= season <= SEASON_SPAN[event][1]:
-        errors.append(f"{where}: {event} was not played in {season}")
+    in_scope = season is not None and (event, tour, season) in expected_keys()
+    if not in_scope:
+        errors.append(f"{where}: not an edition in scope (unknown event, wrong tour, not played or out of range)")
 
     lc, chal, conf = row["line_calling"], row["challenge_review"], row["confidence"]
     if row["surface"] not in SURFACES:
@@ -145,6 +159,8 @@ def check_row(row: dict, where: str, today: datetime.date) -> list[str]:
             errors.append(f"{where}: a sourced row needs a source_title")
     if row["source_url"] and not row["source_title"]:
         errors.append(f"{where}: source_url without source_title")
+    if row["source_title"] and not row["source_url"]:
+        errors.append(f"{where}: source_title without source_url")
 
     if row["source_date"]:
         try:
@@ -154,9 +170,9 @@ def check_row(row: dict, where: str, today: datetime.date) -> list[str]:
         else:
             if len(row["source_date"]) != 10 or d > today:
                 errors.append(f"{where}: source_date {row['source_date']!r} invalid or in the future")
-            # A source dated before the season cannot report what happened in it.
-            if conf == "confirmed" and season is not None and d.year < season:
-                errors.append(f"{where}: confirmed row cites a source dated before the season")
+            # A source dated before the event cannot report what happened at it.
+            if conf == "confirmed" and in_scope and d < earliest_start(event, tour, season):
+                errors.append(f"{where}: confirmed row cites a source dated before the event")
     elif conf == "confirmed":
         errors.append(f"{where}: confirmed row needs a dated source")
     return errors
@@ -179,17 +195,20 @@ def check(path: Path) -> tuple[list[str], list[dict]]:
         rows = list(reader)
 
     today = datetime.date.today()
-    seen: set[tuple[str, str, str]] = set()
+    seen: set[tuple[str, str, int]] = set()
     for n, row in enumerate(rows, start=2):
         where = f"line {n} ({row.get('event')} {row.get('tour')} {row.get('season')})"
         if None in row or any(v is None for v in row.values()):
             errors.append(f"{where}: wrong number of fields")
             continue
         errors.extend(check_row(row, where, today))
-        key = (row["event"], row["season"], row["tour"])
-        if key in seen:
-            errors.append(f"{where}: duplicate event, season and tour")
-        seen.add(key)
+        if row["season"].isdigit():
+            key = (row["event"], row["tour"], int(row["season"]))
+            if key in seen:
+                errors.append(f"{where}: duplicate event, tour and season")
+            seen.add(key)
+    for event, tour, season in sorted(expected_keys() - seen):
+        errors.append(f"missing row: {event} {tour} {season}")
     return errors, rows
 
 

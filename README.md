@@ -4,7 +4,7 @@ Every ATP Tour event has used live electronic line calling, with no line judges,
 The Australian Open (2021), US Open (2021) and Wimbledon (2025) also call every line electronically.
 Roland Garros is the one Grand Slam that still uses human line judges, and it kept them in 2026.
 This dataset shows, event by event and season by season, how lines were called at the top of professional tennis from 2017 to 2026.
-Each row is one event, in one season, for one tour, with a link to the page that supports it.
+Each row is one event, in one season, for one tour. Every row with a known value links the page that supports it.
 
 Published by [Live Tennis API](https://livetennisapi.com) under CC BY 4.0.
 The data is in [`data/line_calling.csv`](data/line_calling.csv).
@@ -40,7 +40,7 @@ The file is UTF-8 CSV with a header row and LF line endings.
 | `notes` | A short plain note on the row. |
 | `source_url` | The page that supports the row. |
 | `source_title` | The title of that page. Where the page carries a wire story, the agency follows in brackets, such as (Associated Press). |
-| `source_date` | The publication date shown on that page, as YYYY-MM-DD. Blank when the page shows no date we trust. |
+| `source_date` | The publication date shown on that page, as YYYY-MM-DD. For a PDF that prints no date, the date in its file name or its creation date. Blank when no date can be trusted. |
 | `confidence` | `confirmed`, `inferred` or `unknown`. |
 
 ### line_calling values
@@ -74,17 +74,17 @@ Total rows: 278.
 |---|---|
 | line_judges | 28 |
 | challenge_system | 64 |
-| elc_some_courts | 3 |
-| elc_all_courts | 101 |
-| unknown | 82 |
+| elc_some_courts | 1 |
+| elc_all_courts | 107 |
+| unknown | 78 |
 
 | confidence | Rows |
 |---|---|
 | confirmed | 41 |
-| inferred | 155 |
-| unknown | 82 |
+| inferred | 159 |
+| unknown | 78 |
 
-The rows cite 73 distinct source pages.
+The rows cite 75 distinct source pages.
 
 ## Method
 
@@ -113,6 +113,7 @@ An NPR report from September 2022 reads as if 2022 was the first fully electroni
 We use 2021.
 The USTA announced in May 2021 that Hawk-Eye Live would cover every court that year.
 ESPN reported in September 2022 that the US Open extended the system to Ashe and Armstrong in 2021.
+AP reported from the 2021 semi-finals that there were no line judges to argue with.
 An AP report from October 2024 also says the US Open has had no line judges since 2021.
 
 ## Known gaps
@@ -125,19 +126,17 @@ The rows below are `unknown`. Corrections with a source are very welcome.
 - Davis Cup Finals 2019 and 2021 to 2025.
 - United Cup 2023 to 2025.
 - WTA Finals 2021 and 2023 to 2025.
-- Italian Open: ATP 2020 to 2023, WTA 2017, 2019 to 2024 and 2026.
+- Italian Open: ATP 2020 to 2023, WTA 2017 and 2019 to 2024.
 - Madrid Open 2022 and 2023, both tours.
-- Miami Open: ATP 2022 and 2023, WTA 2022, 2023, 2025 and 2026.
+- Miami Open: ATP 2022 and 2023, WTA 2022, 2023 and 2025.
 - Cincinnati Open: ATP 2022 and 2023, WTA 2022, 2023 and 2025.
 - Canadian Open: ATP 2022 and 2023, WTA 2023 to 2025.
-- Paris Masters 2020 and 2022 to 2024.
+- Paris Masters 2020 to 2024. Sources disagree on 2021.
 - Shanghai Masters 2023 and 2024.
-- Indian Wells Open, WTA 2025 and 2026.
+- Indian Wells Open, WTA 2025.
 - WTA events in Doha, Dubai, Beijing, Wuhan and Guadalajara in several seasons.
 
-Several 2026 WTA rows are `unknown` for the events played before July.
-The only 2026 WTA rulebook we found is dated 27 July 2026, after those events.
-We did not treat a rule published after an event as evidence for it.
+The 2026 WTA rows cite the rulebook edition dated 22 December 2025, which was published before the season began.
 
 Other limits worth knowing:
 
@@ -155,7 +154,9 @@ python3 scripts/validate.py
 ```
 
 It checks the header, the allowed values and the dates.
-It also checks the rules that tie columns together, and rejects rows for editions that were not played.
+It holds a list of every edition in scope. It reports a missing row and rejects a row for an edition that was not played.
+It checks the rules that tie columns together.
+A `confirmed` row must cite a source dated no earlier than the event's first possible day.
 It prints the coverage counts above and exits with status 1 if any check fails.
 
 ## Licence
