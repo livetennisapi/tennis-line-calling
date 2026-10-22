@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+message: "If you use this dataset, please cite it as below."
+type: dataset
+title: "Electronic line calling in professional tennis, by tournament and season"
+authors:
+  - name: "Live Tennis API"
+    website: "https://livetennisapi.com"
+version: 1.0.0
+date-released: 2026-10-22
+license: CC-BY-4.0
+url: "https://github.com/livetennisapi/tennis-line-calling"
+repository-code: "https://github.com/livetennisapi/tennis-line-calling"
+keywords:
+  - tennis
+  - electronic line calling
+  - Hawk-Eye
+  - officiating
