@@ -2,16 +2,28 @@ cff-version: 1.2.0
 message: "If you use this dataset, please cite it as below."
 type: dataset
 title: "Electronic line calling in professional tennis, by tournament and season"
+abstract: >-
+  How lines were called in top professional tennis from 2017 to 2026. It
+  covers the Grand Slams, ATP Masters 1000 and WTA 1000 events, the season
+  finals and the main team events.
+  Each row gives one event, season and tour. It says whether the event used
+  line judges, a player challenge system or live electronic line calling, and
+  links the page that supports it. Each row also carries a confidence level
+  of confirmed, inferred or unknown.
 authors:
   - name: "Live Tennis API"
     website: "https://livetennisapi.com"
 version: 1.0.0
 date-released: 2026-10-22
 license: CC-BY-4.0
-url: "https://github.com/livetennisapi/tennis-line-calling"
-repository-code: "https://github.com/livetennisapi/tennis-line-calling"
+url: "https://gitlab.com/livetennisapi/tennis-line-calling"
+repository-code: "https://gitlab.com/livetennisapi/tennis-line-calling"
 keywords:
   - tennis
   - electronic line calling
-  - Hawk-Eye
+  - Hawk-Eye Live
+  - line judges
   - officiating
+  - ATP
+  - WTA
+  - Grand Slam
