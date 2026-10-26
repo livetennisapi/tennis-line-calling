@@ -161,9 +161,13 @@ It prints the coverage counts above and exits with status 1 if any check fails.
 
 ## Licence
 
-The dataset is released under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+The dataset is released under the Creative Commons Attribution 4.0 International licence ([CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)).
 You can share and adapt it, including for commercial use, as long as you give credit.
+Copyright 2026 Live Tennis API (https://livetennisapi.com).
 `LICENSE` holds the full legal code.
+
+The source pages linked in the dataset belong to their publishers.
+The licence covers the dataset itself, not those pages.
 
 ## How to cite
 
