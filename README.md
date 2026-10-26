@@ -167,7 +167,7 @@ You can share and adapt it, including for commercial use, as long as you give cr
 
 ## How to cite
 
-Live Tennis API (2026). *Electronic line calling in professional tennis, by tournament and season* (Version 1.0.0) [Data set]. https://gitlab.com/livetennisapi/tennis-line-calling
+Live Tennis API (2026). *Electronic line calling in professional tennis, by tournament and season* (Version 1.0.0) [Data set]. https://github.com/livetennisapi/tennis-line-calling
 
 ```bibtex
 @misc{livetennisapi_line_calling_2026,
@@ -175,7 +175,7 @@ Live Tennis API (2026). *Electronic line calling in professional tennis, by tour
   title        = {Electronic line calling in professional tennis, by tournament and season},
   year         = {2026},
   version      = {1.0.0},
-  howpublished = {\url{https://gitlab.com/livetennisapi/tennis-line-calling}},
+  howpublished = {\url{https://github.com/livetennisapi/tennis-line-calling}},
   note         = {Data set, CC BY 4.0}
 }
 ```
@@ -184,7 +184,7 @@ Live Tennis API (2026). *Electronic line calling in professional tennis, by tour
 
 ## Updates and corrections
 
-Open an issue at https://gitlab.com/livetennisapi/tennis-line-calling/-/issues.
+Open an issue at https://github.com/livetennisapi/tennis-line-calling/issues.
 Please include the event, the season and a link to a source that supports the change.
 We plan to add new seasons as events are played, and to fill gaps as sources turn up.
 Each change to the data gets a new version number.

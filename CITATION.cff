@@ -16,8 +16,8 @@ authors:
 version: 1.0.0
 date-released: 2026-10-22
 license: CC-BY-4.0
-url: "https://gitlab.com/livetennisapi/tennis-line-calling"
-repository-code: "https://gitlab.com/livetennisapi/tennis-line-calling"
+url: "https://github.com/livetennisapi/tennis-line-calling"
+repository-code: "https://github.com/livetennisapi/tennis-line-calling"
 keywords:
   - tennis
   - electronic line calling
