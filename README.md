@@ -159,6 +159,10 @@ It checks the rules that tie columns together.
 A `confirmed` row must cite a source dated no earlier than the event's first possible day.
 It prints the coverage counts above and exits with status 1 if any check fails.
 
+## Teaching pack
+
+The [teaching folder](teaching/README.md) has two slide-sized charts drawn from this file and questions for a statistics class.
+
 ## Licence
 
 The dataset is released under the Creative Commons Attribution 4.0 International licence ([CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)).
