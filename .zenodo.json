@@ -1,0 +1,35 @@
+{
+  "title": "Electronic line calling in professional tennis, by tournament and season",
+  "upload_type": "dataset",
+  "description": "<p>How lines were called in top professional tennis from 2017 to 2026. It covers the Grand Slams, ATP Masters 1000 and WTA 1000 events, the season finals and the main team events.</p><p>Each row gives one event, season and tour. It says whether the event used line judges, a player challenge system or live electronic line calling. Every row with a known value links the page that supports it. Each row also carries a confidence level of confirmed, inferred or unknown.</p><p>Published by <a href=\"https://livetennisapi.com\">Live Tennis API</a>. Dataset page: <a href=\"https://livetennisapi.com/data/tennis-line-calling\">https://livetennisapi.com/data/tennis-line-calling</a>.</p>",
+  "creators": [
+    {
+      "name": "Live Tennis API"
+    }
+  ],
+  "license": "cc-by-4.0",
+  "access_right": "open",
+  "language": "eng",
+  "keywords": [
+    "tennis",
+    "electronic line calling",
+    "Hawk-Eye Live",
+    "line judges",
+    "officiating",
+    "ATP",
+    "WTA",
+    "Grand Slam"
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "https://livetennisapi.com/data/tennis-line-calling",
+      "relation": "isDescribedBy",
+      "scheme": "url"
+    },
+    {
+      "identifier": "https://github.com/livetennisapi/tennis-line-calling",
+      "relation": "isSupplementTo",
+      "scheme": "url"
+    }
+  ]
+}
