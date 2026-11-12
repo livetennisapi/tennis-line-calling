@@ -13,8 +13,8 @@ abstract: >-
 authors:
   - name: "Live Tennis API"
     website: "https://livetennisapi.com"
-version: 1.0.0
-date-released: 2026-10-22
+version: 1.0.1
+date-released: 2026-11-13
 license: CC-BY-4.0
 url: "https://github.com/livetennisapi/tennis-line-calling"
 repository-code: "https://github.com/livetennisapi/tennis-line-calling"

@@ -171,14 +171,14 @@ The licence covers the dataset itself, not those pages.
 
 ## How to cite
 
-Live Tennis API (2026). *Electronic line calling in professional tennis, by tournament and season* (Version 1.0.0) [Data set]. https://github.com/livetennisapi/tennis-line-calling
+Live Tennis API (2026). *Electronic line calling in professional tennis, by tournament and season* (Version 1.0.1) [Data set]. https://github.com/livetennisapi/tennis-line-calling
 
 ```bibtex
 @misc{livetennisapi_line_calling_2026,
   author       = {{Live Tennis API}},
   title        = {Electronic line calling in professional tennis, by tournament and season},
   year         = {2026},
-  version      = {1.0.0},
+  version      = {1.0.1},
   howpublished = {\url{https://github.com/livetennisapi/tennis-line-calling}},
   note         = {Data set, CC BY 4.0}
 }
