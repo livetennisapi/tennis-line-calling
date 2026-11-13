@@ -171,7 +171,11 @@ The licence covers the dataset itself, not those pages.
 
 ## How to cite
 
-Live Tennis API (2026). *Electronic line calling in professional tennis, by tournament and season* (Version 1.0.1) [Data set]. https://github.com/livetennisapi/tennis-line-calling
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24181456.svg)](https://doi.org/10.5281/zenodo.24181456)
+
+The DOI below always points to the newest version. The dataset is archived on Zenodo, and the code and history are on [GitHub](https://github.com/livetennisapi/tennis-line-calling).
+
+Live Tennis API (2026). *Electronic line calling in professional tennis, by tournament and season* (Version 1.0.1) [Data set]. Zenodo. https://doi.org/10.5281/zenodo.24181456
 
 ```bibtex
 @misc{livetennisapi_line_calling_2026,
@@ -179,7 +183,9 @@ Live Tennis API (2026). *Electronic line calling in professional tennis, by tour
   title        = {Electronic line calling in professional tennis, by tournament and season},
   year         = {2026},
   version      = {1.0.1},
-  howpublished = {\url{https://github.com/livetennisapi/tennis-line-calling}},
+  publisher    = {Zenodo},
+  doi          = {10.5281/zenodo.24181456},
+  url          = {https://doi.org/10.5281/zenodo.24181456},
   note         = {Data set, CC BY 4.0}
 }
 ```
